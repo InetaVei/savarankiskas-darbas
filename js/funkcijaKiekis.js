@@ -1,61 +1,42 @@
-/* Funkcija pavadinimu “skaitmenuKiekisSkaiciuje”:
-priima vieną kintamąjį
-jei perduotas kintamasis nėra skaičiaus tipo, tai išveda pranešimą “Pateikta netinkamo tipo reikšmė.”
-priešingu atveju, funkcija tęsia darbą
-į atskirą kintamąjį įsimena skaičių sudarančių skaitmenų kiekį
-gražina skaitmenų kiekį
-TESTAI:*/
+// /* Funkcija pavadinimu “skaitmenuKiekisSkaiciuje”:
+// priima vieną kintamąjį
+// jei perduotas kintamasis nėra skaičiaus tipo, tai išveda pranešimą “Pateikta netinkamo tipo reikšmė.”
+// priešingu atveju, funkcija tęsia darbą
+// į atskirą kintamąjį įsimena skaičių sudarančių skaitmenų kiekį
+// gražina skaitmenų kiekį */
 
-function numCount(number) {
-    const text = '' + number;
 
-    // bendrinis patikrinimas
-    // if (typeof number !== 'number' ||
-    //     isFinite(number) === false) {
-    //     return 'Ne normalus skaicius.';
-    // }
+function skaitmenuKiekisSkaiciuje (number) {
+   let text = number.toString(),
+    size = text.length;
 
-    // gaudome ne skaiciaus tipus
     if (typeof number !== 'number') {
-        return 'Netinkamo tipo reiksme (turi buti skaicius).';
-    }
+     return 'Netinkamo tipo reiksme.';
+    } 
 
-    // gaudome skaiciau tipa, bet ne skaicius (pvz: NaN, Infinity)
     if (isFinite(number) === false) {
-        return 'Netinkama reiksme (turi buti normalus skaicius).';
+    return 'Netinkama reiksme (turi buti normalus skaicius).';
     }
 
-    let ilgis = text.length;
-
-    // o jeigu tai desimtainis, tai eliminuojame taska
     if (number % 1 !== 0) {
-        ilgis--;
+    size--;
     }
 
-    // jeigu neigiamas skaicius, tai eliminuojame minusa
     if (number < 0) {
-        ilgis--;
+    size--;
     }
 
-    return ilgis;
+    return size; 
 }
 
 
-console.log(numCount(true));
-console.log(numCount(false));
-console.log(numCount('asd'));
-console.log(numCount(NaN));
-console.log(numCount(Infinity));
-console.log(numCount(-Infinity));
-
-console.log(numCount(5), '->', 1);
-console.log(numCount(781), '->', 3);
-console.log(numCount(37060123456), '->', 11);
-console.log(numCount(3.14), '->', 3);
-console.log(numCount(3.141592564), '->', 10);
-console.log(numCount(-781), '->', 3);
-console.log(numCount(-5), '->', 1);
-console.log(numCount(-3.14), '->', 3);
-console.log(numCount(-3.141592564), '->', 10);
-
-console.log(numCount(56161611664649849849849848498464494949494488), '->', 44);
+console.log(skaitmenuKiekisSkaiciuje(781));
+console.log(skaitmenuKiekisSkaiciuje(37060123456));
+console.log(skaitmenuKiekisSkaiciuje(3.14));
+console.log(skaitmenuKiekisSkaiciuje('asd'));
+console.log(skaitmenuKiekisSkaiciuje(true));
+console.log(skaitmenuKiekisSkaiciuje(false));
+console.log(skaitmenuKiekisSkaiciuje('asd'));
+console.log(skaitmenuKiekisSkaiciuje(NaN));
+console.log(skaitmenuKiekisSkaiciuje(Infinity));
+console.log(skaitmenuKiekisSkaiciuje(-Infinity));
